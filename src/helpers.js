@@ -6,9 +6,10 @@ const isUrlValid = (url = '') => {
   return regex.test(url)
 }
 
-const makeRequest = (uri) => {
+const makeRequest = (uri, headers) => {
   return rp({
     uri,
+    headers,
     transform: (body, { headers, statusCode }) => ({ headers, statusCode })
   })
 }
