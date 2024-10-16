@@ -8,6 +8,7 @@
   printInfo(`👋  Welcome to ${pkg.name}@${pkg.version}`)
 
   const url = process.argv[2]
+  const headers = process.argv[3] ? JSON.parse(process.argv[3]) : {};
   if (!url) {
     printError('😬  Missing argument URL!')
     printInfo('👉  Example: check-my-headers https://github.com/ulisesgascon/check-my-headers')
@@ -17,7 +18,7 @@
   printInfo(`🚀  The analysis has started for ${url}...`)
 
   try {
-    await checkMyHeaders(url)
+    await checkMyHeaders(url, headers)
     const report = generateReport(url)
     printInfo(report)
     printSuccess('😄  Thanks for use check-my-headers!')
